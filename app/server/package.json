@@ -7,7 +7,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "pretty": "prettier . --write"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +19,8 @@
     "mocha": "^10.7.0",
     "prettier": "3.3.3",
     "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1"
   }
 }
