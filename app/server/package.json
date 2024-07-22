@@ -9,7 +9,7 @@
     "start": "node dist/app.js",
     "build": "tsc -p .",
     "pretty": "prettier . --write",
-    "test": "mocha --parallel -r ts-node/register 'test/**/*.test.ts'"
+    "test": "mocha --parallel -r ts-node/register --esm test/**/*.test.ts"
   },
   "keywords": [],
   "author": "",

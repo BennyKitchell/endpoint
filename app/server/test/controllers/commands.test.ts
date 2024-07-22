@@ -1,6 +1,5 @@
 import { expect } from "chai";
-import { describe, it } from "mocha";
-import { beforeEach } from "node:test";
+import { describe, it, beforeEach } from "mocha";
 import CommandController from "../../src/lib/controller/command.js";
 
 describe("Testing Commands", () => {
@@ -12,22 +11,36 @@ describe("Testing Commands", () => {
 
   describe("Core Functionality Happy Path", () => {
     it("Creates the initial command", async () => {
-      expect(true).to.be.equal(true);
+      const result = commandController.list();
+      expect(result).to.be.equal("LIST");
     });
 
     it("Creates a folder successfully", async () => {
       const result = commandController.create("fruits");
+      const resultList = commandController.list();
+
       expect(result).to.be.equal("CREATE fruits");
+      expect(resultList).to.be.equal("LIST<br>fruits");
     });
 
     it("Creates a sub-folder successfully", async () => {
       const result = commandController.create("fruits/apples");
+      const resultList = commandController.list();
+
       expect(result).to.be.equal("CREATE fruits/apples");
+      expect(resultList).to.be.equal(
+        "LIST<br>fruits<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspapples",
+      );
     });
 
     it("Creates a folder on the same level successfully", async () => {
       const result = commandController.create("grains");
+      const resultList = commandController.list();
+
       expect(result).to.be.equal("CREATE grains");
+      expect(resultList).to.be.equal(
+        "LIST<br>fruits<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcarmona<br>grains",
+      );
     });
 
     it("Deletes a folder successfully", async () => {
@@ -40,11 +53,11 @@ describe("Testing Commands", () => {
   });
   describe("Core Functionality Sad Path", () => {
     it("Does not create a duplicate folder", async () => {
-      const result = commandController.create("grains");
-      expect(result).to.be.equal("CREATE grains");
-      const duplicateResult = commandController.create("grains");
+      const result = commandController.create("dairy");
+      expect(result).to.be.equal("CREATE dairy");
+      const duplicateResult = commandController.create("dairy");
       expect(duplicateResult).to.be.equal(
-        "Invalid Input: Cannot create grains. grains already exists",
+        "Invalid Input: Cannot create dairy. dairy already exists",
       );
     });
 

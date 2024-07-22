@@ -61,6 +61,26 @@ class CommandController {
     return true;
   }
 
+  private printFolders(
+    folders: FolderDirectory[],
+    level: number = 0,
+    response: string = "",
+  ): string {
+    if (folders?.length === 0) {
+      return response;
+    }
+    folders
+      .sort((fa, fb) => fa.name.localeCompare(String(fb.name)))
+      .forEach((f) => {
+        response = response.concat(
+          // HTML string to display correctly on client side
+          `<br>${"&nbsp".repeat(level * 10)}${f.name}`,
+        );
+        response = this.printFolders(f.folders, level + 1, response);
+      });
+    return response;
+  }
+
   create(actionArgument: String): String {
     const names = actionArgument.split("/");
     const wasCreated = this.createSubFolder(
@@ -75,7 +95,9 @@ class CommandController {
 
   delete() {}
   move() {}
-  list() {}
+  list(): string {
+    return this.printFolders(this.initFolder.folders, 0, "LIST");
+  }
 }
 
 export default CommandController;
