@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { describe, it } from "mocha";
 import { beforeEach } from "node:test";
-import CommandController from "../src/lib/controller/command.js";
+import CommandController from "../../src/lib/controller/command.js";
 
 describe("Testing Commands", () => {
   let commandController: CommandController;
