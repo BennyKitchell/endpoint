@@ -7,7 +7,7 @@ enum CommandEnum {
 
 type CommandInterface = {
   name: CommandEnum;
-  method: String;
+  folder: String;
   messageError?: Error;
 };
 
@@ -20,8 +20,21 @@ class CommandHandler {
   };
 
   processCommand = (line: string): CommandInterface => {
-    // validate and process commands if valid
-    return null;
+    line = line.trim();
+    const commandArray: string[] = line.split(" ");
+    const commandName = commandArray.shift() || "";
+
+    let command: CommandInterface = {
+      name: commandName as CommandEnum,
+      folder: commandArray.join(" "),
+    };
+
+    if (!(commandName in CommandEnum)) {
+      command.messageError = new Error(
+        `Invalid Input: The command ${!!commandName ? commandName : "EMPTY LINE"} is not valid`,
+      );
+    }
+    return command;
   };
 }
 
