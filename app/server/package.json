@@ -1,0 +1,22 @@
+{
+  "name": "endpoint-server",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "proxy": "http://localhost:3000/",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc -p ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "chai": "^5.1.1",
+    "mocha": "^10.7.0",
+    "prettier": "3.3.3",
+    "typescript": "^5.5.3"
+  }
+}
