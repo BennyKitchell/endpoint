@@ -1,13 +1,14 @@
 import { FastifyInstance } from "fastify";
+import FileHandler from "../handlers/file.js";
 
 class FileRoute {
-  constructor() {}
+  private fileHandler: FileHandler
+  constructor() {
+    this.fileHandler = new FileHandler();
+  }
 
   file = async (fastify: FastifyInstance) => {
-    fastify.post("/upload/file", (req, reply) => {
-      console.log("Route is working");
-      reply.send();
-    });
+    fastify.post("/upload/file", this.fileHandler.uploadFileHandler);
   };
 }
 
