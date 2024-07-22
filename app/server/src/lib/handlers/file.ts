@@ -13,7 +13,8 @@ class FileHandler {
     const fileData = await req.file();
     const fileContents = await this.fileController.parseFile(fileData);
     const commands = this.commandHandler.processResponseData(fileContents);
-    res.send();
+    const commandList = this.commandHandler.parseCommands(commands);
+    return commandList;
   };
 }
 
