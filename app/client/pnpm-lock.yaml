@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      html-react-parser:
+        specifier: ^5.1.12
+        version: 5.1.12(@types/react@18.3.3)(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1012,11 +1015,43 @@ packages:
       }
     engines: { node: ">=6.0.0" }
 
+  dom-serializer@2.0.0:
+    resolution:
+      {
+        integrity: sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==,
+      }
+
+  domelementtype@2.3.0:
+    resolution:
+      {
+        integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==,
+      }
+
+  domhandler@5.0.3:
+    resolution:
+      {
+        integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==,
+      }
+    engines: { node: ">= 4" }
+
+  domutils@3.1.0:
+    resolution:
+      {
+        integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==,
+      }
+
   electron-to-chromium@1.4.832:
     resolution:
       {
         integrity: sha512-cTen3SB0H2SGU7x467NRe1eVcQgcuS6jckKfWJHia2eo0cHIGOqHoAxevIYZD4eRHcWjkvFzo93bi3vJ9W+1lA==,
       }
+
+  entities@4.5.0:
+    resolution:
+      {
+        integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==,
+      }
+    engines: { node: ">=0.12" }
 
   esbuild@0.21.5:
     resolution:
@@ -1269,6 +1304,30 @@ packages:
       }
     engines: { node: ">=8" }
 
+  html-dom-parser@5.0.9:
+    resolution:
+      {
+        integrity: sha512-QGeoFYwgQ582EDvrBx0+ejIz76/LuQcwwkmSR4ueKncjl2yWbciA45Kfz/LrHvWR3CgtKnxKFkr4Mpq2Sh1QNg==,
+      }
+
+  html-react-parser@5.1.12:
+    resolution:
+      {
+        integrity: sha512-OPv8fsIvxxv/+pLj9mYvyNu8PE5dPMowTRdd5VHpcoZpXlstp8eYCxQ5rzqAE5Tb75rhdiWUXnPltfb62zCVjg==,
+      }
+    peerDependencies:
+      "@types/react": 0.14 || 15 || 16 || 17 || 18
+      react: 0.14 || 15 || 16 || 17 || 18
+    peerDependenciesMeta:
+      "@types/react":
+        optional: true
+
+  htmlparser2@9.1.0:
+    resolution:
+      {
+        integrity: sha512-5zfg6mHUoaer/97TxnGpxmbR7zJtPwIYFMZ/H5ucTlPZhKvtum05yiPK3Mgai3a0DyVxv7qYqoweaEd2nrYQzQ==,
+      }
+
   ignore@5.3.1:
     resolution:
       {
@@ -1301,6 +1360,12 @@ packages:
     resolution:
       {
         integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==,
+      }
+
+  inline-style-parser@0.2.3:
+    resolution:
+      {
+        integrity: sha512-qlD8YNDqyTKTyuITrDOffsl6Tdhv+UC4hcdAVuQsK4IMQ99nSgd1MIA/Q+jQYoh9r3hVUXhYh7urSRmXPkW04g==,
       }
 
   is-extglob@2.1.1:
@@ -1586,6 +1651,12 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-property@2.0.2:
+    resolution:
+      {
+        integrity: sha512-+PbtI3VuDV0l6CleQMsx2gtK0JZbZKbpdu5ynr+lbsuvtmgbNcS3VM0tuY2QjFNOcWxvXeHjDpy42RO+4U2rug==,
+      }
+
   react-refresh@0.14.2:
     resolution:
       {
@@ -1698,6 +1769,18 @@ packages:
         integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==,
       }
     engines: { node: ">=8" }
+
+  style-to-js@1.1.12:
+    resolution:
+      {
+        integrity: sha512-tv+/FkgNYHI2fvCoBMsqPHh5xovwiw+C3X0Gfnss/Syau0Nr3IqGOJ9XiOYXoPnToHVbllKFf5qCNFJGwFg5mg==,
+      }
+
+  style-to-object@1.0.6:
+    resolution:
+      {
+        integrity: sha512-khxq+Qm3xEyZfKd/y9L3oIWQimxuc4STrQKtQn8aSDRHb8mFgpukgX1hdzfrMEW6JCjyJ8p89x+IUMVnCBI1PA==,
+      }
 
   supports-color@5.5.0:
     resolution:
@@ -2406,7 +2489,27 @@ snapshots:
     dependencies:
       esutils: 2.0.3
 
+  dom-serializer@2.0.0:
+    dependencies:
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+      entities: 4.5.0
+
+  domelementtype@2.3.0: {}
+
+  domhandler@5.0.3:
+    dependencies:
+      domelementtype: 2.3.0
+
+  domutils@3.1.0:
+    dependencies:
+      dom-serializer: 2.0.0
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+
   electron-to-chromium@1.4.832: {}
+
+  entities@4.5.0: {}
 
   esbuild@0.21.5:
     optionalDependencies:
@@ -2600,6 +2703,28 @@ snapshots:
 
   has-flag@4.0.0: {}
 
+  html-dom-parser@5.0.9:
+    dependencies:
+      domhandler: 5.0.3
+      htmlparser2: 9.1.0
+
+  html-react-parser@5.1.12(@types/react@18.3.3)(react@18.3.1):
+    dependencies:
+      domhandler: 5.0.3
+      html-dom-parser: 5.0.9
+      react: 18.3.1
+      react-property: 2.0.2
+      style-to-js: 1.1.12
+    optionalDependencies:
+      "@types/react": 18.3.3
+
+  htmlparser2@9.1.0:
+    dependencies:
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+      domutils: 3.1.0
+      entities: 4.5.0
+
   ignore@5.3.1: {}
 
   import-fresh@3.3.0:
@@ -2615,6 +2740,8 @@ snapshots:
       wrappy: 1.0.2
 
   inherits@2.0.4: {}
+
+  inline-style-parser@0.2.3: {}
 
   is-extglob@2.1.1: {}
 
@@ -2745,6 +2872,8 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
+  react-property@2.0.2: {}
+
   react-refresh@0.14.2: {}
 
   react@18.3.1:
@@ -2808,6 +2937,14 @@ snapshots:
       ansi-regex: 5.0.1
 
   strip-json-comments@3.1.1: {}
+
+  style-to-js@1.1.12:
+    dependencies:
+      style-to-object: 1.0.6
+
+  style-to-object@1.0.6:
+    dependencies:
+      inline-style-parser: 0.2.3
 
   supports-color@5.5.0:
     dependencies:
