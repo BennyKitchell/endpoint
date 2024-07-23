@@ -195,6 +195,11 @@ class CommandController {
     }
     return `MOVE ${actionArgument}`;
   }
+
+  clearState() {
+    this.initFolder.name = "init";
+    this.initFolder.folders = [];
+  }
 }
 
 export default CommandController;
