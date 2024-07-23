@@ -44,7 +44,11 @@ describe("Testing Commands", () => {
     });
 
     it("Deletes a folder successfully", async () => {
-      expect(true).to.be.equal(true);
+      const result = commandController.delete("fruits/apples");
+      expect(result).to.be.equal("DELETE fruits/apples");
+
+      const resultList = commandController.list();
+      expect(resultList).to.be.equal("LIST<br>fruits<br>grains");
     });
 
     it("Moves a folder to another successfully", async () => {
@@ -61,7 +65,7 @@ describe("Testing Commands", () => {
       );
     });
 
-    it("Does not execute commands that do not exit", async () => {
+    it("Does not execute commands that do not exist", async () => {
       expect(true).to.be.equal(true);
     });
 

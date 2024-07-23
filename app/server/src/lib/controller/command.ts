@@ -81,6 +81,39 @@ class CommandController {
     return response;
   }
 
+  private deleteFolder(
+    actionArgument: String,
+    names: String[],
+    parentFolder: FolderDirectory,
+    index: number = 0,
+  ): FolderDirectory | String {
+    if (index === names.length) {
+      return `Invalid Input: Cannot delete ${names.length}. It doesnt exist`;
+    }
+    if (index === names.length - 1) {
+      const folderToDelete: FolderDirectory = parentFolder.folders.find(
+        (f) => f.name === names[index],
+      )!;
+      parentFolder.folders = parentFolder.folders.filter(
+        (f) => f.name !== names[index],
+      );
+      return folderToDelete;
+    }
+    const childFound = parentFolder.folders.find(
+      (folder) => folder.name === names[index],
+    );
+    if (!childFound) {
+      return (
+        "Invalid Input: Cannot delete " +
+        actionArgument +
+        " - " +
+        names[index] +
+        " does not exist"
+      );
+    }
+    return this.deleteFolder(actionArgument, names, childFound, index + 1);
+  }
+
   create(actionArgument: String): String {
     const names = actionArgument.split("/");
     const wasCreated = this.createSubFolder(
@@ -93,7 +126,18 @@ class CommandController {
       : String(wasCreated);
   }
 
-  delete() {}
+  delete(actionArgument: String): String {
+    const names = actionArgument.split("/");
+    const wasDeleted: FolderDirectory | String = this.deleteFolder(
+      actionArgument,
+      names,
+      this.initFolder,
+    );
+    return (wasDeleted as FolderDirectory)?.name !== undefined
+      ? "DELETE " + actionArgument
+      : String(wasDeleted);
+  }
+
   move() {}
   list(): string {
     return this.printFolders(this.initFolder.folders, 0, "LIST");
