@@ -37,7 +37,7 @@ function FileUpload() {
         <FileDisplay commands={commands} />
         <input type="file" onChange={handleChange} />
         <input
-          className={"button"}
+          className={"data-button"}
           type="button"
           value="upload"
           onClick={fetchData}
