@@ -9,7 +9,7 @@ function FileUpload() {
     if (event.target.files !== null) {
       setFileSelected(event.target.files[0]);
     }
-  }
+  };
 
   const fetchData = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.preventDefault();
@@ -30,11 +30,11 @@ function FileUpload() {
         });
     }
   };
-  
+
   return (
     <>
       <form encType="multipart/form-data" action="">
-        <FileDisplay commands={commands}/>
+        <FileDisplay commands={commands} />
         <input type="file" onChange={handleChange} />
         <input
           className={"button"}

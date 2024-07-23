@@ -1,12 +1,12 @@
 interface DisplayProps {
-    commands: String[]
+  commands: String[];
 }
-function FileDisplay(props: DisplayProps) { 
-    return ( 
-        <>
-            <div>{props.commands}</div>
-        </>
-    )
+function FileDisplay(props: DisplayProps) {
+  return (
+    <>
+      <div>{props.commands}</div>
+    </>
+  );
 }
 
-export default FileDisplay
+export default FileDisplay;
