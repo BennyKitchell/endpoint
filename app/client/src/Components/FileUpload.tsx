@@ -3,7 +3,7 @@ import FileDisplay from "./FileDisplay";
 
 function FileUpload() {
   const [fileSelected, setFileSelected] = useState<File>();
-  const [commands, setCommands] = useState<String[]>([]);
+  const [commands, setCommands] = useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files !== null) {
