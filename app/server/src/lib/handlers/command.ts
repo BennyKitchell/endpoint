@@ -83,6 +83,10 @@ class CommandHandler {
     }
     return command;
   };
+
+  clearState = () => {
+    this.commandController.clearState();
+  };
 }
 
 export default CommandHandler;

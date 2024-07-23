@@ -14,6 +14,7 @@ class FileHandler {
     const fileContents = await this.fileController.parseFile(fileData);
     const commands = this.commandHandler.processResponseData(fileContents);
     const commandList = this.commandHandler.parseCommands(commands);
+    this.commandHandler.clearState();
     return commandList;
   };
 }
