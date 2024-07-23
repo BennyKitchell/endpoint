@@ -114,6 +114,33 @@ class CommandController {
     return this.deleteFolder(actionArgument, names, childFound, index + 1);
   }
 
+  private moveFolder(
+    actionArgument: String,
+    names: String[],
+    parentFolder: FolderDirectory,
+    index: number = 0,
+    folderToMove: FolderDirectory,
+  ): Boolean | String {
+    if (index === names.length) {
+      parentFolder.folders.push(folderToMove);
+      return true;
+    }
+    const childFound = parentFolder.folders.find(
+      (folder) => folder.name === names[index],
+    );
+    if (!childFound) {
+      return false;
+    }
+    return this.moveFolder(
+      actionArgument,
+      names,
+      childFound,
+      index + 1,
+      folderToMove,
+    );
+  }
+
+  /* Non-private methods */
   create(actionArgument: String): String {
     const names = actionArgument.split("/");
     const wasCreated = this.createSubFolder(
@@ -138,9 +165,35 @@ class CommandController {
       : String(wasDeleted);
   }
 
-  move() {}
   list(): string {
     return this.printFolders(this.initFolder.folders, 0, "LIST");
+  }
+
+  move(actionArgument: String): String {
+    const groupArguments = actionArgument.split(" ");
+    const argumentToDelete = groupArguments[0];
+    const namesToDelete = groupArguments[0].split("/");
+    const itemToDelete = this.deleteFolder(
+      argumentToDelete,
+      namesToDelete,
+      this.initFolder,
+    );
+    if (!itemToDelete) {
+      return String(itemToDelete);
+    }
+    const argumentsToCreate = groupArguments[1];
+    const namesToCreate = argumentsToCreate.split("/");
+    const wasMoved = this.moveFolder(
+      actionArgument,
+      namesToCreate,
+      this.initFolder,
+      0,
+      itemToDelete as FolderDirectory,
+    );
+    if (!wasMoved) {
+      return `Invalid Input: the folder ${namesToCreate} does not exist`;
+    }
+    return `MOVE ${actionArgument}`;
   }
 }
 

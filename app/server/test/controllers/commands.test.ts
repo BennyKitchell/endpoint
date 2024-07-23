@@ -39,7 +39,7 @@ describe("Testing Commands", () => {
 
       expect(result).to.be.equal("CREATE grains");
       expect(resultList).to.be.equal(
-        "LIST<br>fruits<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcarmona<br>grains",
+        "LIST<br>fruits<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspapples<br>grains",
       );
     });
 
@@ -52,7 +52,13 @@ describe("Testing Commands", () => {
     });
 
     it("Moves a folder to another successfully", async () => {
-      expect(true).to.be.equal(true);
+      const result = commandController.move("fruits grains");
+      expect(result).to.be.equal("MOVE fruits grains");
+
+      const resultList = commandController.list();
+      expect(resultList).to.be.equal(
+        "LIST<br>grains<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspfruits",
+      );
     });
   });
   describe("Core Functionality Sad Path", () => {
@@ -65,16 +71,11 @@ describe("Testing Commands", () => {
       );
     });
 
-    it("Does not execute commands that do not exist", async () => {
-      expect(true).to.be.equal(true);
-    });
-
-    it("Does not move a folder if the destination is not correct", async () => {
-      expect(true).to.be.equal(true);
-    });
-
-    it("Handles white space correctly", async () => {
-      expect(true).to.be.equal(true);
+    it("Does not move a folder if the destination does not exist", async () => {
+      const result = commandController.move("fruits fake");
+      expect(result).to.be.equal(
+        "Invalid Input: the folder dairy does not exist",
+      );
     });
   });
 });

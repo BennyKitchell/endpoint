@@ -6,7 +6,7 @@
   "proxy": "http://localhost:3000/",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node dist/src/app.js",
     "build": "tsc -p .",
     "pretty": "prettier . --write",
     "test": "mocha --parallel -r ts-node/register --esm test/**/*.test.ts"
